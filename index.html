@@ -1,337 +1,880 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NidoApp — Alojamientos únicos en América Latina. Inspired by Airbnb.">
-  <title>NidoApp — Tu lugar en América Latina</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Raíces — Descubre experiencias auténticas en Colombia. Tours, aventuras y cultura local de la mano de guías locales." />
+  <meta name="author" content="Raíces Team" />
+  <meta name="keywords" content="turismo Colombia, tours, experiencias, aventura, cultura colombiana" />
+
+  <title>Raíces — Experiencias auténticas en Colombia</title>
+
+  <!--
+    [Developer 2 - rama: feature/diseno-css]
+    El archivo de estilos se enlaza aquí.
+    Google Fonts también se importará desde este archivo.
+  -->
+  <link rel="stylesheet" href="css/main.css" />
+
+  <!--
+    [Developer 3 - rama: feature/interactividad-js]
+    El script se enlaza al final del <body> para no bloquear el renderizado.
+  -->
 </head>
+
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="logo">
-      <a href="#inicio">nido<span>app</span></a>
+  <!-- ============================================================
+       HEADER — Barra de navegación superior
+       Fija en scroll (comportamiento controlado por Developer 3)
+  ============================================================ -->
+  <header class="site-header" id="inicio">
+    <div class="container header-inner">
+
+      <!-- Logo de la marca -->
+      <a href="#inicio" class="logo" aria-label="Raíces - Volver al inicio">
+        <img
+          src="assets/img/logo.svg"
+          alt="Logotipo de Raíces, plataforma de experiencias turísticas en Colombia"
+          width="130"
+          height="40"
+        />
+      </a>
+
+      <!--
+        Botón hamburguesa para móvil.
+        Developer 3 controlará aria-expanded y la visibilidad del menú.
+      -->
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+        aria-controls="mainNav"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <!-- Menú principal -->
+      <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+        <ul class="nav-list" role="list">
+          <li><a href="#experiencias" class="nav-link">Experiencias</a></li>
+          <li><a href="#beneficios"   class="nav-link">¿Por qué Raíces?</a></li>
+          <li><a href="#destinos"     class="nav-link">Destinos</a></li>
+          <li><a href="#testimonios"  class="nav-link">Historias</a></li>
+          <li><a href="#contacto"     class="nav-link nav-cta">Reservar ahora</a></li>
+        </ul>
+      </nav>
+
     </div>
-    <nav aria-label="Navegación principal">
-      <ul>
-        <li><a href="#beneficios">Beneficios</a></li>
-        <li><a href="#caracteristicas">Cómo funciona</a></li>
-        <li><a href="#testimonios">Reseñas</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-      <a class="btn-nav" href="#contacto">Publica tu espacio</a>
-    </nav>
   </header>
 
-  <main id="inicio">
 
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <div class="hero__contenido">
-        <h1>Tu próximo hogar lejos de casa</h1>
-        <p>Más de 80,000 alojamientos únicos en toda América Latina.</p>
-        <form class="buscador" action="#" method="get" role="search">
-          <div class="buscador__campo">
-            <label for="destino">¿A dónde vas?</label>
-            <input type="search" id="destino" name="destino" placeholder="Ciudad o región" required>
-          </div>
-          <div class="buscador__campo">
-            <label for="llegada">Llegada</label>
-            <input type="date" id="llegada" name="check_in">
-          </div>
-          <div class="buscador__campo">
-            <label for="salida">Salida</label>
-            <input type="date" id="salida" name="check_out">
-          </div>
-          <div class="buscador__campo">
-            <label for="huespedes">Huéspedes</label>
-            <select id="huespedes" name="huespedes">
-              <option value="1">1 huésped</option>
-              <option value="2">2 huéspedes</option>
-              <option value="3">3 huéspedes</option>
-              <option value="4+">4 o más</option>
-            </select>
-          </div>
-          <button type="submit">Buscar</button>
-        </form>
-      </div>
-    </section>
+  <!-- ============================================================
+       SECCIÓN HERO — Primera impresión del producto
+       Imagen de fondo de paisaje colombiano + buscador de tours
+  ============================================================ -->
+  <section class="hero" id="hero" aria-labelledby="hero-title">
 
-    <!-- ALOJAMIENTOS POPULARES -->
-    <section class="alojamientos" id="alojamientos">
-      <h2>Populares en Colombia</h2>
-      <div class="grid-cards">
+    <!-- Imagen de fondo del hero -->
+    <figure class="hero-bg" aria-hidden="true">
+      <img
+        src="assets/img/hero-bg.jpg"
+        alt=""
+        class="hero-bg-img"
+        width="1920"
+        height="1080"
+        loading="eager"
+      />
+      <!-- Overlay de color cálido aplicado por CSS -->
+      <div class="hero-overlay"></div>
+    </figure>
 
-        <article class="card">
-          <img src="assets/images/prop-cafetero.jpg" alt="Cabaña de madera entre cafetales en Salento, Quindío" loading="lazy">
-          <div class="card__info">
-            <h3>Cabaña en el Eje Cafetero</h3>
-            <p>Salento, Quindío &bull; 2 habitaciones</p>
-            <p><strong>$180,000 COP</strong> / noche &nbsp; ⭐ 4.97</p>
-          </div>
-        </article>
+    <div class="container hero-content">
 
-        <article class="card">
-          <img src="assets/images/prop-cartagena.jpg" alt="Apartamento con balcón y vista al mar Caribe en Bocagrande, Cartagena" loading="lazy">
-          <div class="card__info">
-            <h3>Apto. frente al mar – Cartagena</h3>
-            <p>Bocagrande, Cartagena &bull; 1 habitación</p>
-            <p><strong>$320,000 COP</strong> / noche &nbsp; ⭐ 4.92</p>
-          </div>
-        </article>
+      <!-- Etiqueta de categoría -->
+      <p class="hero-badge">🌿 Turismo auténtico y responsable</p>
 
-        <article class="card">
-          <img src="assets/images/prop-medellin.jpg" alt="Loft moderno con vista panorámica a la ciudad de Medellín desde El Poblado" loading="lazy">
-          <div class="card__info">
-            <h3>Loft con vista a Medellín</h3>
-            <p>El Poblado, Medellín &bull; Estudio</p>
-            <p><strong>$210,000 COP</strong> / noche &nbsp; ⭐ 4.87</p>
-          </div>
-        </article>
+      <!-- H1: único en la página -->
+      <h1 class="hero-title" id="hero-title">
+        Colombia te espera.<br />
+        <span class="hero-title-accent">Vívela desde adentro.</span>
+      </h1>
 
-        <article class="card">
-          <img src="assets/images/prop-sabana.jpg" alt="Casa campestre con piscina y jardín grande en Tabio, Cundinamarca" loading="lazy">
-          <div class="card__info">
-            <h3>Casa campestre – Sabana de Bogotá</h3>
-            <p>Tabio, Cundinamarca &bull; 4 habitaciones</p>
-            <p><strong>$450,000 COP</strong> / noche &nbsp; ⭐ 5.0</p>
-          </div>
-        </article>
+      <p class="hero-description">
+        Conectamos viajeros curiosos con guías locales apasionados.
+        Descubre experiencias únicas en cada rincón del país —
+        desde el Amazonas hasta la Sierra Nevada.
+      </p>
 
-      </div>
-    </section>
-
-    <!-- BENEFICIOS -->
-    <section class="beneficios" id="beneficios">
-      <h2>Viaja con total tranquilidad</h2>
-      <div class="grid-cards">
-
-        <article class="beneficio-card">
-          <span aria-hidden="true">🔒</span>
-          <h3>Pagos 100% seguros</h3>
-          <p>Todas las transacciones están protegidas. Nunca pagas fuera de la plataforma.</p>
-        </article>
-
-        <article class="beneficio-card">
-          <span aria-hidden="true">🕐</span>
-          <h3>Cancelación flexible</h3>
-          <p>La mayoría de alojamientos ofrecen cancelación gratuita hasta 48 h antes del check-in.</p>
-        </article>
-
-        <article class="beneficio-card">
-          <span aria-hidden="true">🛡️</span>
-          <h3>Garantía NidoApp</h3>
-          <p>Si el alojamiento no coincide con la descripción, te reubicamos o te devolvemos el dinero.</p>
-        </article>
-
-        <article class="beneficio-card">
-          <span aria-hidden="true">📱</span>
-          <h3>Soporte 24/7</h3>
-          <p>Nuestro equipo está disponible todos los días del año por chat, teléfono o correo.</p>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- CARACTERÍSTICAS — Cómo funciona -->
-    <section class="como-funciona" id="caracteristicas">
-      <h2>Reservar es muy fácil</h2>
-      <div class="pasos">
-
-        <article class="paso">
-          <img src="assets/images/paso-buscar.jpg" alt="Persona usando una laptop para buscar alojamientos en NidoApp" loading="lazy">
-          <h3><span aria-hidden="true">1.</span> Busca y filtra</h3>
-          <p>Escribe tu destino, elige fechas y filtra por precio, tipo y comodidades.</p>
-        </article>
-
-        <article class="paso">
-          <img src="assets/images/paso-reservar.jpg" alt="Pantalla de confirmación de reserva con botón de pago seguro en NidoApp" loading="lazy">
-          <h3><span aria-hidden="true">2.</span> Reserva con seguridad</h3>
-          <p>Paga en segundos y recibe confirmación inmediata por correo y en la app.</p>
-        </article>
-
-        <article class="paso">
-          <img src="assets/images/paso-disfrutar.jpg" alt="Pareja llegando a un alojamiento de NidoApp siendo recibida por el anfitrión" loading="lazy">
-          <h3><span aria-hidden="true">3.</span> Llega y disfruta</h3>
-          <p>El anfitrión te recibirá con instrucciones claras y soporte 24/7 disponible.</p>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- TESTIMONIOS -->
-    <section class="testimonios" id="testimonios">
-      <h2>Lo que dicen nuestros viajeros</h2>
-      <div class="grid-cards">
-
-        <article class="testimonio-card">
-          <p class="estrellas" aria-label="5 de 5 estrellas">⭐⭐⭐⭐⭐</p>
-          <blockquote>
-            <p>"La cabaña del Eje Cafetero superó todas mis expectativas. ¡Volvería sin dudarlo!"</p>
-          </blockquote>
-          <footer>
-            <img src="assets/images/avatar-camila.jpg" alt="Foto de Camila Torres" width="48" height="48" loading="lazy">
-            <cite>Camila Torres &mdash; Bogotá</cite>
-          </footer>
-        </article>
-
-        <article class="testimonio-card">
-          <p class="estrellas" aria-label="5 de 5 estrellas">⭐⭐⭐⭐⭐</p>
-          <blockquote>
-            <p>"Primera vez con NidoApp y fue perfecto. El proceso de reserva fue sencillísimo."</p>
-          </blockquote>
-          <footer>
-            <img src="assets/images/avatar-ricardo.jpg" alt="Foto de Ricardo Peña" width="48" height="48" loading="lazy">
-            <cite>Ricardo Peña &mdash; Medellín</cite>
-          </footer>
-        </article>
-
-        <article class="testimonio-card">
-          <p class="estrellas" aria-label="5 de 5 estrellas">⭐⭐⭐⭐⭐</p>
-          <blockquote>
-            <p>"Como nómada digital, filtrar por WiFi rápido me ahorra horas. Soporte excelente."</p>
-          </blockquote>
-          <footer>
-            <img src="assets/images/avatar-valentina.jpg" alt="Foto de Valentina Ruiz" width="48" height="48" loading="lazy">
-            <cite>Valentina Ruiz &mdash; Nómada digital</cite>
-          </footer>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- CONTACTO / REGISTRO DE ANFITRIÓN -->
-    <section class="contacto" id="contacto">
-      <h2>¿Tienes un espacio? Publícalo gratis</h2>
-      <p>Únete a más de 15,000 anfitriones y empieza a generar ingresos extra.</p>
-
-      <form class="formulario" action="#" method="post" novalidate>
-
-        <div class="campo">
-          <label for="nombre">Nombre completo *</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required autocomplete="name">
+      <!--
+        Buscador de experiencias.
+        Developer 3 añadirá comportamiento de búsqueda.
+      -->
+      <form class="hero-search" id="heroSearch" role="search" aria-label="Buscador de experiencias">
+        <div class="search-group">
+          <label for="searchDestino" class="search-label">¿A dónde vas?</label>
+          <input
+            type="text"
+            id="searchDestino"
+            name="destino"
+            class="search-input"
+            placeholder="Ej. Cartagena, Salento, Amazonas…"
+            autocomplete="off"
+          />
         </div>
 
-        <div class="campo">
-          <label for="email">Correo electrónico *</label>
-          <input type="email" id="email" name="email" placeholder="tu@correo.com" required autocomplete="email">
+        <div class="search-group">
+          <label for="searchFecha" class="search-label">¿Cuándo?</label>
+          <input
+            type="date"
+            id="searchFecha"
+            name="fecha"
+            class="search-input"
+          />
         </div>
 
-        <div class="campo">
-          <label for="telefono">Teléfono / WhatsApp</label>
-          <input type="tel" id="telefono" name="telefono" placeholder="+57 300 000 0000" autocomplete="tel">
-        </div>
-
-        <div class="campo">
-          <label for="ciudad">Ciudad del alojamiento *</label>
-          <input type="text" id="ciudad" name="ciudad" placeholder="Ej: Cartagena, Bogotá" required>
-        </div>
-
-        <div class="campo">
-          <label for="tipo">Tipo de propiedad *</label>
-          <select id="tipo" name="tipo" required>
-            <option value="" disabled selected>Selecciona</option>
-            <option value="apartamento">Apartamento</option>
-            <option value="casa">Casa</option>
-            <option value="habitacion">Habitación privada</option>
-            <option value="cabana">Cabaña / Finca</option>
+        <div class="search-group">
+          <label for="searchPersonas" class="search-label">Personas</label>
+          <select id="searchPersonas" name="personas" class="search-select">
+            <option value="1">1 persona</option>
+            <option value="2" selected>2 personas</option>
+            <option value="3-5">3–5 personas</option>
+            <option value="6+">Grupo (+6)</option>
           </select>
         </div>
 
-        <div class="campo">
-          <label for="mensaje">Describe tu espacio (opcional)</label>
-          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Cuéntanos sobre tu propiedad…"></textarea>
-        </div>
-
-        <div class="campo campo--checkbox">
-          <input type="checkbox" id="terminos" name="terminos" required>
-          <label for="terminos">
-            Acepto los <a href="#terminos-legales">Términos de Servicio</a> y la <a href="#privacidad">Política de Privacidad</a>. *
-          </label>
-        </div>
-
-        <button type="submit">Publicar mi propiedad — es gratis</button>
-
+        <button type="submit" class="btn btn-primary search-btn" id="heroCta">
+          Buscar experiencias
+        </button>
       </form>
-    </section>
 
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="site-footer__columnas">
-
-      <nav aria-label="Soporte">
-        <h3>Soporte</h3>
-        <ul>
-          <li><a href="#">Centro de ayuda</a></li>
-          <li><a href="#">Cancelaciones</a></li>
-          <li><a href="#">Reportar un problema</a></li>
+      <!-- Etiquetas populares para búsqueda rápida -->
+      <div class="hero-tags" aria-label="Búsquedas populares">
+        <span class="tags-label">Popular:</span>
+        <ul class="tags-list" role="list">
+          <li><a href="#" class="tag">🏄 Surf en Palomino</a></li>
+          <li><a href="#" class="tag">☕ Ruta del café</a></li>
+          <li><a href="#" class="tag">🐊 Ciénaga Grande</a></li>
+          <li><a href="#" class="tag">🌋 Volcán del Totumo</a></li>
         </ul>
-      </nav>
-
-      <nav aria-label="Comunidad">
-        <h3>Comunidad</h3>
-        <ul>
-          <li><a href="#">Foro de anfitriones</a></li>
-          <li><a href="#">Viaja responsablemente</a></li>
-          <li><a href="#">Combatir la discriminación</a></li>
-        </ul>
-      </nav>
-
-      <nav aria-label="Para anfitriones">
-        <h3>Para anfitriones</h3>
-        <ul>
-          <li><a href="#contacto">Publica tu espacio</a></li>
-          <li><a href="#">Recursos para anfitriones</a></li>
-          <li><a href="#">Cómo ser superanfitrión</a></li>
-        </ul>
-      </nav>
-
-      <nav aria-label="NidoApp">
-        <h3>NidoApp</h3>
-        <ul>
-          <li><a href="#">Sobre nosotros</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Empleos</a></li>
-          <li><a href="#">Prensa</a></li>
-        </ul>
-      </nav>
+      </div>
 
     </div>
+  </section>
 
-    <div class="site-footer__inferior">
-      <p>&copy; <time datetime="2026">2026</time> NidoApp &bull;
-        <a href="#">Privacidad</a> &bull;
-        <a href="#">Términos</a> &bull;
-        <a href="#">Mapa del sitio</a>
-      </p>
 
-      <nav aria-label="Redes sociales de NidoApp">
-        <ul class="redes-sociales">
-          <li><a href="https://facebook.com/nidoapp" target="_blank" rel="noopener" aria-label="NidoApp en Facebook">
-            <img src="assets/images/icono-facebook.svg" alt="Facebook" width="24" height="24">
-          </a></li>
-          <li><a href="https://instagram.com/nidoapp" target="_blank" rel="noopener" aria-label="NidoApp en Instagram">
-            <img src="assets/images/icono-instagram.svg" alt="Instagram" width="24" height="24">
-          </a></li>
-          <li><a href="https://twitter.com/nidoapp" target="_blank" rel="noopener" aria-label="NidoApp en Twitter">
-            <img src="assets/images/icono-twitter.svg" alt="Twitter / X" width="24" height="24">
-          </a></li>
-          <li><a href="https://youtube.com/@nidoapp" target="_blank" rel="noopener" aria-label="NidoApp en YouTube">
-            <img src="assets/images/icono-youtube.svg" alt="YouTube" width="24" height="24">
-          </a></li>
-          <li><a href="https://tiktok.com/@nidoapp" target="_blank" rel="noopener" aria-label="NidoApp en TikTok">
-            <img src="assets/images/icono-tiktok.svg" alt="TikTok" width="24" height="24">
-          </a></li>
-        </ul>
-      </nav>
+  <!-- ============================================================
+       SECCIÓN EXPERIENCIAS DESTACADAS — Cards de tours
+  ============================================================ -->
+  <section class="experiences" id="experiencias" aria-labelledby="experiences-title">
+    <div class="container">
+
+      <header class="section-header">
+        <h2 class="section-title" id="experiences-title">
+          Experiencias que te cambian
+        </h2>
+        <p class="section-subtitle">
+          Cuidadosamente seleccionadas. Guiadas por locales. Imposibles de olvidar.
+        </p>
+      </header>
+
+      <div class="experiences-grid" role="list">
+
+        <!-- Experiencia 1 -->
+        <article class="experience-card" role="listitem">
+          <a href="#" class="card-link" aria-label="Ver experiencia: Amanecer en el Valle del Cocora">
+            <figure class="card-image-wrapper">
+              <img
+                src="assets/img/exp-cocora.jpg"
+                alt="Palmas de cera del Valle del Cocora al amanecer con niebla entre las montañas verdes"
+                class="card-image"
+                width="400"
+                height="280"
+                loading="lazy"
+              />
+              <span class="card-badge">Más vendida</span>
+            </figure>
+          </a>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-location">📍 Salento, Quindío</span>
+              <span class="card-rating" aria-label="Valoración: 4.9 de 5">⭐ 4.9</span>
+            </div>
+            <h3 class="card-title">
+              <a href="#" class="card-title-link">Amanecer en el Valle del Cocora</a>
+            </h3>
+            <p class="card-description">
+              Caminata guiada entre palmas de cera, el árbol nacional de Colombia.
+              Desayuno campesino incluido al regreso.
+            </p>
+            <div class="card-footer">
+              <p class="card-price">
+                Desde <strong>$85.000 COP</strong>
+                <span class="card-price-unit">/ persona</span>
+              </p>
+              <span class="card-duration">⏱ 6 horas</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Experiencia 2 -->
+        <article class="experience-card" role="listitem">
+          <a href="#" class="card-link" aria-label="Ver experiencia: Sabores del Centro Histórico">
+            <figure class="card-image-wrapper">
+              <img
+                src="assets/img/exp-cartagena.jpg"
+                alt="Calles coloridas del centro histórico de Cartagena con vendedores de frutas tropicales"
+                class="card-image"
+                width="400"
+                height="280"
+                loading="lazy"
+              />
+            </figure>
+          </a>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-location">📍 Cartagena, Bolívar</span>
+              <span class="card-rating" aria-label="Valoración: 4.8 de 5">⭐ 4.8</span>
+            </div>
+            <h3 class="card-title">
+              <a href="#" class="card-title-link">Sabores del Centro Histórico</a>
+            </h3>
+            <p class="card-description">
+              Recorre los mercados y restaurantes locales del corralito de piedra.
+              Prueba arepas, frutos exóticos y cocina costeña auténtica.
+            </p>
+            <div class="card-footer">
+              <p class="card-price">
+                Desde <strong>$120.000 COP</strong>
+                <span class="card-price-unit">/ persona</span>
+              </p>
+              <span class="card-duration">⏱ 4 horas</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Experiencia 3 -->
+        <article class="experience-card" role="listitem">
+          <a href="#" class="card-link" aria-label="Ver experiencia: Caño Cristales el río de colores">
+            <figure class="card-image-wrapper">
+              <img
+                src="assets/img/exp-cano-cristales.jpg"
+                alt="Aguas multicolores de Caño Cristales con tonos rojos, azules y amarillos entre rocas"
+                class="card-image"
+                width="400"
+                height="280"
+                loading="lazy"
+              />
+              <span class="card-badge card-badge--new">Nuevo</span>
+            </figure>
+          </a>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-location">📍 La Macarena, Meta</span>
+              <span class="card-rating" aria-label="Valoración: 5.0 de 5">⭐ 5.0</span>
+            </div>
+            <h3 class="card-title">
+              <a href="#" class="card-title-link">Caño Cristales: el río de colores</a>
+            </h3>
+            <p class="card-description">
+              Explora el "río más hermoso del mundo" con un guía nativo del Meta.
+              Tour de día completo con transporte desde Villavicencio.
+            </p>
+            <div class="card-footer">
+              <p class="card-price">
+                Desde <strong>$350.000 COP</strong>
+                <span class="card-price-unit">/ persona</span>
+              </p>
+              <span class="card-duration">⏱ Todo el día</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="section-cta">
+        <a href="#" class="btn btn-outline">Ver todas las experiencias →</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECCIÓN BENEFICIOS — Por qué usar Raíces (mínimo 3)
+  ============================================================ -->
+  <section class="benefits" id="beneficios" aria-labelledby="benefits-title">
+    <div class="container">
+
+      <header class="section-header">
+        <h2 class="section-title" id="benefits-title">
+          ¿Por qué viajar con Raíces?
+        </h2>
+        <p class="section-subtitle">
+          No somos una agencia de viajes. Somos el puente entre tú y la Colombia real.
+        </p>
+      </header>
+
+      <div class="benefits-grid" role="list">
+
+        <!-- Beneficio 1 -->
+        <article class="benefit-card" role="listitem">
+          <div class="benefit-icon" aria-hidden="true">
+            <img src="assets/img/icon-local.svg" alt="" width="56" height="56" />
+          </div>
+          <h3 class="benefit-title">Guías 100% locales</h3>
+          <p class="benefit-description">
+            Cada experiencia es liderada por personas que nacieron y crecieron en el destino.
+            Conocen los secretos que no aparecen en ninguna guía turística.
+          </p>
+        </article>
+
+        <!-- Beneficio 2 -->
+        <article class="benefit-card" role="listitem">
+          <div class="benefit-icon" aria-hidden="true">
+            <img src="assets/img/icon-secure.svg" alt="" width="56" height="56" />
+          </div>
+          <h3 class="benefit-title">Reserva segura y flexible</h3>
+          <p class="benefit-description">
+            Pago protegido y cancelación gratuita hasta 48 horas antes.
+            Si algo sale mal, te devolvemos el dinero sin preguntas.
+          </p>
+        </article>
+
+        <!-- Beneficio 3 -->
+        <article class="benefit-card" role="listitem">
+          <div class="benefit-icon" aria-hidden="true">
+            <img src="assets/img/icon-eco.svg" alt="" width="56" height="56" />
+          </div>
+          <h3 class="benefit-title">Turismo responsable</h3>
+          <p class="benefit-description">
+            El 15% de cada reserva va directo a proyectos ambientales y sociales
+            en las comunidades que visitas. Viajar bien hace bien.
+          </p>
+        </article>
+
+        <!-- Beneficio 4 -->
+        <article class="benefit-card" role="listitem">
+          <div class="benefit-icon" aria-hidden="true">
+            <img src="assets/img/icon-small.svg" alt="" width="56" height="56" />
+          </div>
+          <h3 class="benefit-title">Grupos pequeños</h3>
+          <p class="benefit-description">
+            Máximo 10 personas por tour. Atención personalizada, menos ruido
+            y una experiencia más íntima y auténtica.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECCIÓN DESTINOS — Regiones de Colombia
+  ============================================================ -->
+  <section class="destinations" id="destinos" aria-labelledby="destinations-title">
+    <div class="container">
+
+      <header class="section-header">
+        <h2 class="section-title" id="destinations-title">
+          Explora por región
+        </h2>
+        <p class="section-subtitle">
+          De los Andes al Caribe, de la Amazonía al Pacífico.
+          Colombia cabe en mil viajes.
+        </p>
+      </header>
+
+      <div class="destinations-grid" role="list">
+
+        <article class="destination-card" role="listitem">
+          <a href="#" class="dest-link" aria-label="Explorar experiencias en el Eje Cafetero">
+            <figure class="dest-image-wrapper">
+              <img
+                src="assets/img/dest-eje-cafetero.jpg"
+                alt="Finca cafetera en el Eje Cafetero con montañas verdes y cultivos de café"
+                class="dest-image"
+                width="300"
+                height="400"
+                loading="lazy"
+              />
+            </figure>
+            <div class="dest-info">
+              <h3 class="dest-name">Eje Cafetero</h3>
+              <p class="dest-count">18 experiencias</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="destination-card" role="listitem">
+          <a href="#" class="dest-link" aria-label="Explorar experiencias en la Costa Caribe">
+            <figure class="dest-image-wrapper">
+              <img
+                src="assets/img/dest-caribe.jpg"
+                alt="Playa caribeña colombiana con aguas turquesa, palmeras y arena blanca"
+                class="dest-image"
+                width="300"
+                height="400"
+                loading="lazy"
+              />
+            </figure>
+            <div class="dest-info">
+              <h3 class="dest-name">Costa Caribe</h3>
+              <p class="dest-count">24 experiencias</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="destination-card" role="listitem">
+          <a href="#" class="dest-link" aria-label="Explorar experiencias en la Amazonía">
+            <figure class="dest-image-wrapper">
+              <img
+                src="assets/img/dest-amazonia.jpg"
+                alt="Selva amazónica colombiana con vegetación exuberante y río Amazonas al fondo"
+                class="dest-image"
+                width="300"
+                height="400"
+                loading="lazy"
+              />
+            </figure>
+            <div class="dest-info">
+              <h3 class="dest-name">Amazonía</h3>
+              <p class="dest-count">12 experiencias</p>
+            </div>
+          </a>
+        </article>
+
+        <article class="destination-card" role="listitem">
+          <a href="#" class="dest-link" aria-label="Explorar experiencias en los Llanos Orientales">
+            <figure class="dest-image-wrapper">
+              <img
+                src="assets/img/dest-llanos.jpg"
+                alt="Atardecer en los Llanos Orientales con hato ganadero y cielo naranja vibrante"
+                class="dest-image"
+                width="300"
+                height="400"
+                loading="lazy"
+              />
+            </figure>
+            <div class="dest-info">
+              <h3 class="dest-name">Llanos Orientales</h3>
+              <p class="dest-count">9 experiencias</p>
+            </div>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECCIÓN TESTIMONIOS — Historias de viajeros
+  ============================================================ -->
+  <section class="testimonials" id="testimonios" aria-labelledby="testimonials-title">
+    <div class="container">
+
+      <header class="section-header">
+        <h2 class="section-title" id="testimonials-title">
+          Historias que inspiran
+        </h2>
+        <p class="section-subtitle">
+          Más de 8.000 viajeros han dejado su corazón en Colombia con Raíces.
+        </p>
+      </header>
+
+      <div class="testimonials-grid">
+
+        <!-- Testimonio 1 -->
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 estrellas de 5">
+            <span aria-hidden="true">★★★★★</span>
+          </div>
+          <blockquote class="testimonial-quote">
+            <p>
+              "El tour por el Cocora fue la experiencia más impresionante de mi vida.
+              El guía conocía cada planta, cada pájaro. Volveré sí o sí."
+            </p>
+          </blockquote>
+          <footer class="testimonial-author">
+            <img
+              src="assets/img/avatar-maria.jpg"
+              alt="Foto de perfil de María Fernanda Ospina"
+              class="testimonial-avatar"
+              width="52"
+              height="52"
+              loading="lazy"
+            />
+            <div class="testimonial-info">
+              <cite class="testimonial-name">María Fernanda Ospina</cite>
+              <span class="testimonial-role">Viajera desde Bogotá</span>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Testimonio 2 -->
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 estrellas de 5">
+            <span aria-hidden="true">★★★★★</span>
+          </div>
+          <blockquote class="testimonial-quote">
+            <p>
+              "Vine desde España sin saber nada de Colombia y Raíces me mostró
+              un país increíble. El tour gastronómico en Cartagena fue unforgettable."
+            </p>
+          </blockquote>
+          <footer class="testimonial-author">
+            <img
+              src="assets/img/avatar-david.jpg"
+              alt="Foto de perfil de David Sánchez"
+              class="testimonial-avatar"
+              width="52"
+              height="52"
+              loading="lazy"
+            />
+            <div class="testimonial-info">
+              <cite class="testimonial-name">David Sánchez</cite>
+              <span class="testimonial-role">Viajero desde Madrid, España</span>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Testimonio 3 -->
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 estrellas de 5">
+            <span aria-hidden="true">★★★★★</span>
+          </div>
+          <blockquote class="testimonial-quote">
+            <p>
+              "Reservar fue facilísimo, el guía llegó puntual y la experiencia superó
+              todas mis expectativas. ¡Ya agendé mi próximo tour por la Amazonía!"
+            </p>
+          </blockquote>
+          <footer class="testimonial-author">
+            <img
+              src="assets/img/avatar-ana.jpg"
+              alt="Foto de perfil de Ana Lucía Moreno"
+              class="testimonial-avatar"
+              width="52"
+              height="52"
+              loading="lazy"
+            />
+            <div class="testimonial-info">
+              <cite class="testimonial-name">Ana Lucía Moreno</cite>
+              <span class="testimonial-role">Viajera desde Medellín</span>
+            </div>
+          </footer>
+        </article>
+
+      </div>
+
+      <!-- Estadísticas — Developer 3 animará estos números con JS -->
+      <div class="trust-stats" aria-label="Estadísticas de Raíces">
+        <div class="stat-item">
+          <span class="stat-number" data-target="8000" id="statTravelers">0</span>
+          <span class="stat-label">Viajeros felices</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="120" id="statExperiences">0</span>
+          <span class="stat-label">Experiencias únicas</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="48" id="statGuides">0</span>
+          <span class="stat-label">Guías locales</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="32" id="statDestinations">0</span>
+          <span class="stat-label">Destinos en Colombia</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECCIÓN CONTACTO — Formulario de reserva / registro
+       Validación dinámica gestionada por Developer 3
+  ============================================================ -->
+  <section class="contact" id="contacto" aria-labelledby="contact-title">
+    <div class="container contact-wrapper">
+
+      <div class="contact-text">
+        <h2 class="section-title" id="contact-title">
+          Tu próxima aventura<br />empieza aquí
+        </h2>
+        <p class="section-subtitle">
+          Déjanos tus datos y un guía local se pondrá en contacto contigo
+          en menos de 24 horas para armar tu experiencia ideal.
+        </p>
+        <img
+          src="assets/img/contact-illustration.svg"
+          alt="Ilustración de mapa de Colombia con marcadores de destinos turísticos"
+          class="contact-illustration"
+          width="400"
+          height="300"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="contact-form-wrapper">
+        <form
+          class="contact-form"
+          id="contactForm"
+          novalidate
+          aria-label="Formulario para reservar una experiencia en Raíces"
+        >
+
+          <!-- Nombre -->
+          <div class="form-group">
+            <label for="fullName" class="form-label">Nombre completo *</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              class="form-input"
+              placeholder="Ej. Carlos Andrade"
+              autocomplete="name"
+              required
+              aria-required="true"
+              aria-describedby="fullName-error"
+            />
+            <span class="form-error" id="fullName-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Correo -->
+          <div class="form-group">
+            <label for="email" class="form-label">Correo electrónico *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="tu@correo.com"
+              autocomplete="email"
+              required
+              aria-required="true"
+              aria-describedby="email-error"
+            />
+            <span class="form-error" id="email-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Teléfono -->
+          <div class="form-group">
+            <label for="phone" class="form-label">Teléfono / WhatsApp</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="form-input"
+              placeholder="+57 300 000 0000"
+              autocomplete="tel"
+              aria-describedby="phone-hint"
+            />
+            <span class="form-hint" id="phone-hint">Opcional — para coordinar detalles por WhatsApp</span>
+          </div>
+
+          <!-- Destino -->
+          <div class="form-group">
+            <label for="destination" class="form-label">Destino de interés *</label>
+            <select
+              id="destination"
+              name="destination"
+              class="form-select"
+              required
+              aria-required="true"
+              aria-describedby="destination-error"
+            >
+              <option value="" disabled selected>Selecciona una región</option>
+              <option value="eje-cafetero">Eje Cafetero</option>
+              <option value="costa-caribe">Costa Caribe</option>
+              <option value="amazonia">Amazonía</option>
+              <option value="llanos">Llanos Orientales</option>
+              <option value="pacifico">Pacífico colombiano</option>
+              <option value="otro">Otro / Aún no sé</option>
+            </select>
+            <span class="form-error" id="destination-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Fecha -->
+          <div class="form-group">
+            <label for="travelDate" class="form-label">Fecha aproximada del viaje *</label>
+            <input
+              type="date"
+              id="travelDate"
+              name="travelDate"
+              class="form-input"
+              required
+              aria-required="true"
+              aria-describedby="travelDate-error"
+            />
+            <span class="form-error" id="travelDate-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Mensaje -->
+          <div class="form-group">
+            <label for="message" class="form-label">Cuéntanos qué buscas</label>
+            <textarea
+              id="message"
+              name="message"
+              class="form-textarea"
+              rows="3"
+              placeholder="¿Aventura, gastronomía, cultura, naturaleza? ¿Viajas solo, en pareja, en familia?"
+              aria-describedby="message-hint"
+            ></textarea>
+            <span class="form-hint" id="message-hint">Mientras más detalles, mejor podemos ayudarte</span>
+          </div>
+
+          <!-- Checkbox términos -->
+          <div class="form-group form-group--checkbox">
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              class="form-checkbox"
+              required
+              aria-required="true"
+              aria-describedby="terms-error"
+            />
+            <label for="terms" class="form-label form-label--checkbox">
+              Acepto los
+              <a href="#" class="form-link">Términos de Servicio</a>
+              y la
+              <a href="#" class="form-link">Política de Privacidad</a> *
+            </label>
+            <span class="form-error" id="terms-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Mensaje de éxito — Developer 3 lo mostrará con JS -->
+          <div class="form-success" id="formSuccess" role="alert" aria-live="polite" hidden>
+            🌿 ¡Gracias! Un guía local te contactará en menos de 24 horas.
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+            Quiero mi experiencia →
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER — Cierre del sitio con redes sociales
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- Columna 1: Marca -->
+        <div class="footer-brand">
+          <a href="#inicio" aria-label="Raíces - Volver al inicio">
+            <img
+              src="assets/img/logo-white.svg"
+              alt="Logotipo de Raíces en blanco"
+              width="110"
+              height="34"
+              loading="lazy"
+            />
+          </a>
+          <p class="footer-tagline">
+            Conectando viajeros con la Colombia auténtica desde 2022.
+            Turismo responsable, guías locales, memorias para siempre.
+          </p>
+
+          <!-- Redes sociales -->
+          <nav class="social-nav" aria-label="Redes sociales de Raíces">
+            <ul class="social-list" role="list">
+              <li>
+                <a href="https://instagram.com" class="social-link" aria-label="Síguenos en Instagram" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/img/icon-instagram.svg" alt="" width="24" height="24" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href="https://facebook.com" class="social-link" aria-label="Síguenos en Facebook" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/img/icon-facebook.svg" alt="" width="24" height="24" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href="https://tiktok.com" class="social-link" aria-label="Síguenos en TikTok" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/img/icon-tiktok.svg" alt="" width="24" height="24" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href="https://youtube.com" class="social-link" aria-label="Nuestro canal de YouTube" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/img/icon-youtube.svg" alt="" width="24" height="24" aria-hidden="true" />
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Columna 2: Explorar -->
+        <nav class="footer-nav" aria-label="Explorar Raíces">
+          <h4 class="footer-nav-title">Explorar</h4>
+          <ul class="footer-nav-list" role="list">
+            <li><a href="#experiencias" class="footer-link">Experiencias</a></li>
+            <li><a href="#destinos"     class="footer-link">Destinos</a></li>
+            <li><a href="#"             class="footer-link">Guías locales</a></li>
+            <li><a href="#"             class="footer-link">Blog de viajes</a></li>
+          </ul>
+        </nav>
+
+        <!-- Columna 3: Empresa -->
+        <nav class="footer-nav" aria-label="Información de la empresa">
+          <h4 class="footer-nav-title">Empresa</h4>
+          <ul class="footer-nav-list" role="list">
+            <li><a href="#" class="footer-link">Sobre Raíces</a></li>
+            <li><a href="#" class="footer-link">Turismo responsable</a></li>
+            <li><a href="#" class="footer-link">Sé guía local</a></li>
+            <li><a href="#" class="footer-link">Prensa</a></li>
+          </ul>
+        </nav>
+
+        <!-- Columna 4: Soporte -->
+        <nav class="footer-nav" aria-label="Soporte y ayuda">
+          <h4 class="footer-nav-title">Soporte</h4>
+          <ul class="footer-nav-list" role="list">
+            <li><a href="#contacto" class="footer-link">Contacto</a></li>
+            <li><a href="#"         class="footer-link">Preguntas frecuentes</a></li>
+            <li><a href="#"         class="footer-link">Política de cancelación</a></li>
+            <li><a href="#"         class="footer-link">Términos y condiciones</a></li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <!-- Barra inferior -->
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 2025 Raíces SAS. Hecho con ❤️ en Colombia.
+        </p>
+        <p class="footer-legal">
+          <a href="#" class="footer-link">Privacidad</a> ·
+          <a href="#" class="footer-link">Cookies</a> ·
+          <a href="#" class="footer-link">Accesibilidad</a>
+        </p>
+      </div>
+
     </div>
   </footer>
 
-  <script src="assets/js/main.js" defer></script>
+
+  <!--
+    [Developer 3 - rama: feature/interactividad-js]
+    El script se carga al final del body para mejor rendimiento.
+    Controlará: menú móvil, scroll suave, validación de formulario,
+    animaciones por scroll y contador animado de estadísticas.
+  -->
+  <script src="js/app.js"></script>
 
 </body>
 </html>
