@@ -1,64 +1,337 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorio 1</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .section {
-            margin-bottom: 20px;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NidoApp — Alojamientos únicos en América Latina. Inspired by Airbnb.">
+  <title>NidoApp — Tu lugar en América Latina</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Laboratorio 1</h1>
-        
-        <div class="section">
-            <h2>Bienvenida</h2>
-            <p>Este es el primer laboratorio del curso.</p>
-        </div>
-        
-        <div class="section">
-            <h2>Instrucciones</h2>
-            <ol>
-                <li>Completa los ejercicios propuestos</li>
-                <li>Prueba tu código</li>
-                <li>Envía los resultados</li>
-            </ol>
-        </div>
-        
-        <div class="section">
-            <button onclick="alert('¡Laboratorio iniciado!')">Comenzar</button>
-        </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">
+      <a href="#inicio">nido<span>app</span></a>
     </div>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#caracteristicas">Cómo funciona</a></li>
+        <li><a href="#testimonios">Reseñas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <a class="btn-nav" href="#contacto">Publica tu espacio</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__contenido">
+        <h1>Tu próximo hogar lejos de casa</h1>
+        <p>Más de 80,000 alojamientos únicos en toda América Latina.</p>
+        <form class="buscador" action="#" method="get" role="search">
+          <div class="buscador__campo">
+            <label for="destino">¿A dónde vas?</label>
+            <input type="search" id="destino" name="destino" placeholder="Ciudad o región" required>
+          </div>
+          <div class="buscador__campo">
+            <label for="llegada">Llegada</label>
+            <input type="date" id="llegada" name="check_in">
+          </div>
+          <div class="buscador__campo">
+            <label for="salida">Salida</label>
+            <input type="date" id="salida" name="check_out">
+          </div>
+          <div class="buscador__campo">
+            <label for="huespedes">Huéspedes</label>
+            <select id="huespedes" name="huespedes">
+              <option value="1">1 huésped</option>
+              <option value="2">2 huéspedes</option>
+              <option value="3">3 huéspedes</option>
+              <option value="4+">4 o más</option>
+            </select>
+          </div>
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ALOJAMIENTOS POPULARES -->
+    <section class="alojamientos" id="alojamientos">
+      <h2>Populares en Colombia</h2>
+      <div class="grid-cards">
+
+        <article class="card">
+          <img src="assets/images/prop-cafetero.jpg" alt="Cabaña de madera entre cafetales en Salento, Quindío" loading="lazy">
+          <div class="card__info">
+            <h3>Cabaña en el Eje Cafetero</h3>
+            <p>Salento, Quindío &bull; 2 habitaciones</p>
+            <p><strong>$180,000 COP</strong> / noche &nbsp; ⭐ 4.97</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="assets/images/prop-cartagena.jpg" alt="Apartamento con balcón y vista al mar Caribe en Bocagrande, Cartagena" loading="lazy">
+          <div class="card__info">
+            <h3>Apto. frente al mar – Cartagena</h3>
+            <p>Bocagrande, Cartagena &bull; 1 habitación</p>
+            <p><strong>$320,000 COP</strong> / noche &nbsp; ⭐ 4.92</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="assets/images/prop-medellin.jpg" alt="Loft moderno con vista panorámica a la ciudad de Medellín desde El Poblado" loading="lazy">
+          <div class="card__info">
+            <h3>Loft con vista a Medellín</h3>
+            <p>El Poblado, Medellín &bull; Estudio</p>
+            <p><strong>$210,000 COP</strong> / noche &nbsp; ⭐ 4.87</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="assets/images/prop-sabana.jpg" alt="Casa campestre con piscina y jardín grande en Tabio, Cundinamarca" loading="lazy">
+          <div class="card__info">
+            <h3>Casa campestre – Sabana de Bogotá</h3>
+            <p>Tabio, Cundinamarca &bull; 4 habitaciones</p>
+            <p><strong>$450,000 COP</strong> / noche &nbsp; ⭐ 5.0</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="beneficios" id="beneficios">
+      <h2>Viaja con total tranquilidad</h2>
+      <div class="grid-cards">
+
+        <article class="beneficio-card">
+          <span aria-hidden="true">🔒</span>
+          <h3>Pagos 100% seguros</h3>
+          <p>Todas las transacciones están protegidas. Nunca pagas fuera de la plataforma.</p>
+        </article>
+
+        <article class="beneficio-card">
+          <span aria-hidden="true">🕐</span>
+          <h3>Cancelación flexible</h3>
+          <p>La mayoría de alojamientos ofrecen cancelación gratuita hasta 48 h antes del check-in.</p>
+        </article>
+
+        <article class="beneficio-card">
+          <span aria-hidden="true">🛡️</span>
+          <h3>Garantía NidoApp</h3>
+          <p>Si el alojamiento no coincide con la descripción, te reubicamos o te devolvemos el dinero.</p>
+        </article>
+
+        <article class="beneficio-card">
+          <span aria-hidden="true">📱</span>
+          <h3>Soporte 24/7</h3>
+          <p>Nuestro equipo está disponible todos los días del año por chat, teléfono o correo.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CARACTERÍSTICAS — Cómo funciona -->
+    <section class="como-funciona" id="caracteristicas">
+      <h2>Reservar es muy fácil</h2>
+      <div class="pasos">
+
+        <article class="paso">
+          <img src="assets/images/paso-buscar.jpg" alt="Persona usando una laptop para buscar alojamientos en NidoApp" loading="lazy">
+          <h3><span aria-hidden="true">1.</span> Busca y filtra</h3>
+          <p>Escribe tu destino, elige fechas y filtra por precio, tipo y comodidades.</p>
+        </article>
+
+        <article class="paso">
+          <img src="assets/images/paso-reservar.jpg" alt="Pantalla de confirmación de reserva con botón de pago seguro en NidoApp" loading="lazy">
+          <h3><span aria-hidden="true">2.</span> Reserva con seguridad</h3>
+          <p>Paga en segundos y recibe confirmación inmediata por correo y en la app.</p>
+        </article>
+
+        <article class="paso">
+          <img src="assets/images/paso-disfrutar.jpg" alt="Pareja llegando a un alojamiento de NidoApp siendo recibida por el anfitrión" loading="lazy">
+          <h3><span aria-hidden="true">3.</span> Llega y disfruta</h3>
+          <p>El anfitrión te recibirá con instrucciones claras y soporte 24/7 disponible.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonios" id="testimonios">
+      <h2>Lo que dicen nuestros viajeros</h2>
+      <div class="grid-cards">
+
+        <article class="testimonio-card">
+          <p class="estrellas" aria-label="5 de 5 estrellas">⭐⭐⭐⭐⭐</p>
+          <blockquote>
+            <p>"La cabaña del Eje Cafetero superó todas mis expectativas. ¡Volvería sin dudarlo!"</p>
+          </blockquote>
+          <footer>
+            <img src="assets/images/avatar-camila.jpg" alt="Foto de Camila Torres" width="48" height="48" loading="lazy">
+            <cite>Camila Torres &mdash; Bogotá</cite>
+          </footer>
+        </article>
+
+        <article class="testimonio-card">
+          <p class="estrellas" aria-label="5 de 5 estrellas">⭐⭐⭐⭐⭐</p>
+          <blockquote>
+            <p>"Primera vez con NidoApp y fue perfecto. El proceso de reserva fue sencillísimo."</p>
+          </blockquote>
+          <footer>
+            <img src="assets/images/avatar-ricardo.jpg" alt="Foto de Ricardo Peña" width="48" height="48" loading="lazy">
+            <cite>Ricardo Peña &mdash; Medellín</cite>
+          </footer>
+        </article>
+
+        <article class="testimonio-card">
+          <p class="estrellas" aria-label="5 de 5 estrellas">⭐⭐⭐⭐⭐</p>
+          <blockquote>
+            <p>"Como nómada digital, filtrar por WiFi rápido me ahorra horas. Soporte excelente."</p>
+          </blockquote>
+          <footer>
+            <img src="assets/images/avatar-valentina.jpg" alt="Foto de Valentina Ruiz" width="48" height="48" loading="lazy">
+            <cite>Valentina Ruiz &mdash; Nómada digital</cite>
+          </footer>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CONTACTO / REGISTRO DE ANFITRIÓN -->
+    <section class="contacto" id="contacto">
+      <h2>¿Tienes un espacio? Publícalo gratis</h2>
+      <p>Únete a más de 15,000 anfitriones y empieza a generar ingresos extra.</p>
+
+      <form class="formulario" action="#" method="post" novalidate>
+
+        <div class="campo">
+          <label for="nombre">Nombre completo *</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required autocomplete="name">
+        </div>
+
+        <div class="campo">
+          <label for="email">Correo electrónico *</label>
+          <input type="email" id="email" name="email" placeholder="tu@correo.com" required autocomplete="email">
+        </div>
+
+        <div class="campo">
+          <label for="telefono">Teléfono / WhatsApp</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+57 300 000 0000" autocomplete="tel">
+        </div>
+
+        <div class="campo">
+          <label for="ciudad">Ciudad del alojamiento *</label>
+          <input type="text" id="ciudad" name="ciudad" placeholder="Ej: Cartagena, Bogotá" required>
+        </div>
+
+        <div class="campo">
+          <label for="tipo">Tipo de propiedad *</label>
+          <select id="tipo" name="tipo" required>
+            <option value="" disabled selected>Selecciona</option>
+            <option value="apartamento">Apartamento</option>
+            <option value="casa">Casa</option>
+            <option value="habitacion">Habitación privada</option>
+            <option value="cabana">Cabaña / Finca</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="mensaje">Describe tu espacio (opcional)</label>
+          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Cuéntanos sobre tu propiedad…"></textarea>
+        </div>
+
+        <div class="campo campo--checkbox">
+          <input type="checkbox" id="terminos" name="terminos" required>
+          <label for="terminos">
+            Acepto los <a href="#terminos-legales">Términos de Servicio</a> y la <a href="#privacidad">Política de Privacidad</a>. *
+          </label>
+        </div>
+
+        <button type="submit">Publicar mi propiedad — es gratis</button>
+
+      </form>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="site-footer__columnas">
+
+      <nav aria-label="Soporte">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="#">Centro de ayuda</a></li>
+          <li><a href="#">Cancelaciones</a></li>
+          <li><a href="#">Reportar un problema</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Comunidad">
+        <h3>Comunidad</h3>
+        <ul>
+          <li><a href="#">Foro de anfitriones</a></li>
+          <li><a href="#">Viaja responsablemente</a></li>
+          <li><a href="#">Combatir la discriminación</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Para anfitriones">
+        <h3>Para anfitriones</h3>
+        <ul>
+          <li><a href="#contacto">Publica tu espacio</a></li>
+          <li><a href="#">Recursos para anfitriones</a></li>
+          <li><a href="#">Cómo ser superanfitrión</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="NidoApp">
+        <h3>NidoApp</h3>
+        <ul>
+          <li><a href="#">Sobre nosotros</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Empleos</a></li>
+          <li><a href="#">Prensa</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="site-footer__inferior">
+      <p>&copy; <time datetime="2026">2026</time> NidoApp &bull;
+        <a href="#">Privacidad</a> &bull;
+        <a href="#">Términos</a> &bull;
+        <a href="#">Mapa del sitio</a>
+      </p>
+
+      <nav aria-label="Redes sociales de NidoApp">
+        <ul class="redes-sociales">
+          <li><a href="https://facebook.com/nidoapp" target="_blank" rel="noopener" aria-label="NidoApp en Facebook">
+            <img src="assets/images/icono-facebook.svg" alt="Facebook" width="24" height="24">
+          </a></li>
+          <li><a href="https://instagram.com/nidoapp" target="_blank" rel="noopener" aria-label="NidoApp en Instagram">
+            <img src="assets/images/icono-instagram.svg" alt="Instagram" width="24" height="24">
+          </a></li>
+          <li><a href="https://twitter.com/nidoapp" target="_blank" rel="noopener" aria-label="NidoApp en Twitter">
+            <img src="assets/images/icono-twitter.svg" alt="Twitter / X" width="24" height="24">
+          </a></li>
+          <li><a href="https://youtube.com/@nidoapp" target="_blank" rel="noopener" aria-label="NidoApp en YouTube">
+            <img src="assets/images/icono-youtube.svg" alt="YouTube" width="24" height="24">
+          </a></li>
+          <li><a href="https://tiktok.com/@nidoapp" target="_blank" rel="noopener" aria-label="NidoApp en TikTok">
+            <img src="assets/images/icono-tiktok.svg" alt="TikTok" width="24" height="24">
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+
 </body>
 </html>
